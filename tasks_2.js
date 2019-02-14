@@ -1,4 +1,6 @@
 
+'use strict';
+
 $(document).ready(function() {
 
     var a = 1;
@@ -76,20 +78,6 @@ $(document).ready(function() {
                 history.push(val);
                 currentIndex = history.length - 1;
             });
-            /*
-            container.find('.back').click(function () {
-                if (currentIndex !== undefined && currentIndex <= (history.length - 1)) {
-                    currentIndex--;
-                    container.find('input').val(history[currentIndex]);
-                }
-            });
-            container.find('.up').click(function () {
-                if (currentIndex !== undefined && currentIndex > 0) {
-                    currentIndex++;
-                    container.find('input').val(history[currentIndex]);
-                }
-            });
-            */
             container.find('.back').click(function () {
                 if (currentIndex !== undefined && currentIndex > 0) {
                     currentIndex--;
@@ -109,6 +97,52 @@ $(document).ready(function() {
 
     setHistoryInput('textInputContainer1');
     setHistoryInput('textInputContainer2');
+    
+    var arr = [-1, 0, 4, 5, 2, -6];
+    arr = arr.filter(function(number) {
+        return number >= 0;
+    });
+    arr = arr.map(function(number) {
+        return Math.sqrt(number);
+    });
+    console.log(arr);
+    
+    let [firstName, lastName, ...rest] = "Юлий Цезарь Император Рима".split(" ");
+    
+    var dataArray = [1, 2, 3, 'четыре', 5, 6];
+    let [elem1, elem2, elem3, ...arr2] = dataArray;
+    console.log(arr2);
+   
+    var obj = {name: 'Петр', 'surname': 'Петров', 'age': '20 лет'};
+    let {name = 'Аноном', surname = 'Анонимович', age = '? лет'} = obj;
+    console.log(name);
+    console.log(surname);
+    console.log(age);
+
+    for (let value of dataArray) {
+        console.log(value);
+    }
+    
+    var str = 'огого ну и ну';
+    var n = 0;
+    for (let value of str) {
+        if (value == 'о') {
+            n++;
+        }
+    }
+    console.log('-----');
+    console.log(n);
+
+    var set = new Set([1, 2, 3]);
+    var sum = 0;
+    for (let value of set) {
+        sum += value;
+    }
+    console.log('sum = ' + sum);
+    
+    var str = '["Коля", "Вася", "Петя"]';
+    var arrayFromJson = JSON.parse(str);
+    console.log(arrayFromJson[2]);
 
 });
 
