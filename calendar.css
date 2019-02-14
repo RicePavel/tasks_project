@@ -1,0 +1,79 @@
+
+.calendar {
+    border: 1px solid black;
+    float: left;
+    width: 210px;
+}
+
+.calendar .header {
+    height: 20px;
+    padding: 10px;
+}
+
+.calendarCell {
+    float: left;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+.calendar .letter {
+    float: left;
+}
+
+.calendar .arrows {
+     float: right;
+}
+
+.calendar .arrows span {
+    padding: 5px;
+}
+
+.calendar .arrows span:hover {
+    cursor: pointer;
+}
+
+.calendar .week div {
+    float: left;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+.calendar .currentDay {
+    background-color: black;
+    color: white;
+}
+
+.sortedTable {
+    margin: 50px;
+    border-collapse: collapse;
+}
+
+.sortedTable td, .sortedTable th {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

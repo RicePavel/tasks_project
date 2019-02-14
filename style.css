@@ -1,0 +1,61 @@
+
+/* игра */
+
+.numbersGame .field {
+    width: 260px;
+    height: 260px;
+    border: 1px solid black;
+    margin: 50px 0 0 100px;
+}
+
+.numbersGame .field .cell {
+    width: 46px;
+    height: 46px;
+    border: 1px solid black;
+    float: left;
+    margin: 2px;
+
+    text-align: center;
+    line-height: 46px;
+    /* font-size: 12pt; */
+    /* font-size: 25pt; */
+    font-weight: bold;
+}
+
+.numbersGame .field .cell.checked {
+    color: white !important;
+    background: green;
+}
+
+.numbersGame .field .cell:hover {
+    cursor: pointer;
+}
+
+.numbersGame .restartInput {
+    margin: 30px 0 0 150px;
+}
+
+/* таблица */
+
+.sortedTable {
+    border-collapse: collapse;
+    margin: 50px;
+}
+
+.sortedTable td, .sortedTable th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.sortedTable th:hover {
+    cursor: pointer;
+}
+
+.sortedTable th.asc:after {
+    content:"↓";
+}
+
+.sortedTable th.desc:after {
+    content:"↑";
+}
+
