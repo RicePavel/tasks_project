@@ -1,6 +1,10 @@
 
 $(document).ready(function() {
 
+    var calculator = new HtmlCalculator('calculatorContainer');
+
+    var tictacGame = new HtmlTicTac('tictacContainer');
+
     var pollData = [
         {
             text: 'JavaScript это тоже самое что и Java?',
