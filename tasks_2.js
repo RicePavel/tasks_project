@@ -210,14 +210,16 @@ $(document).ready(function() {
 
         function load() {
             var data = JSON.parse(localStorage.getItem('formdata_' + id));
-            for (var i = 0; i < data.length; i++) {
-                var name = data[i].name;
-                var value = data[i].value;
-                var element = form.find('[name=' + name + ']');
-                if (element.get(0).tagName === 'INPUT' && (element.attr('type') === 'radio' || element.attr('type') === 'checkbox')) {
-                    form.find('[name="' + name + '"][value="' + value + '"]').prop('checked', true);
-                } else {
-                    element.val(value);
+            if (data) {
+                for (var i = 0; i < data.length; i++) {
+                    var name = data[i].name;
+                    var value = data[i].value;
+                    var element = form.find('[name=' + name + ']');
+                    if (element.get(0).tagName === 'INPUT' && (element.attr('type') === 'radio' || element.attr('type') === 'checkbox')) {
+                        form.find('[name="' + name + '"][value="' + value + '"]').prop('checked', true);
+                    } else {
+                        element.val(value);
+                    }
                 }
             }
         }
@@ -226,6 +228,45 @@ $(document).ready(function() {
 
     var storageForm = new StorageForm('localStorageForm');
 
+    var example = document.getElementById("example");
+    var ctx = example.getContext('2d');
+    ctx.fillStyle = 'lightgray';
+    ctx.fillRect(0, 0, example.width, example.height);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(20, 20, 100, 100);
+    
+    var canvas2 = document.getElementById('example_2');
+    canvas2.width = 200;
+    canvas2.height = 200;
+    ctx = canvas2.getContext('2d');
+    ctx.fillStyle = '#ebebeb';
+    ctx.fillRect(0, 0, canvas2.width, canvas2.height);
+    ctx.fillStyle='green';
+    ctx.fillRect(75, 25, 50, 50);
+    ctx.fillStyle='red';
+    ctx.fillRect(75, 100, 50, 50);
+    
+    var canvas3 = document.getElementById('example_3');
+    canvas3.width = 200;
+    canvas3.height = 200;
+    ctx = canvas3.getContext('2d');
+    ctx.fillStyle = '#ebebeb';
+    ctx.fillRect(0, 0, canvas2.width, canvas2.height);
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'black';
+    for (var i = 0; i < 10; i++) {
+        var yCoordinate = 50 + (i * 10); 
+        ctx.moveTo(40, yCoordinate);
+        ctx.lineTo(150, yCoordinate);
+        ctx.stroke();
+    }
+    for (var i = 0; i < 10; i++) {
+        var xCoordinate = 50 + (i * 10); 
+        ctx.moveTo(xCoordinate, 40);
+        ctx.lineTo(xCoordinate, 150);
+        ctx.stroke();
+    }
 });
 
 
