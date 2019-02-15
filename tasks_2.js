@@ -144,6 +144,88 @@ $(document).ready(function() {
     var arrayFromJson = JSON.parse(str);
     console.log(arrayFromJson[2]);
 
+    var width = localStorage.getItem('width');;
+    var height = localStorage.getItem('height');;
+    if (width !== null && height !== null) {
+        $('#textarea_1').width(width);
+        $('#textarea_1').height(height);
+    }
+    $('#textarea_1').mouseup(function() {
+        var width = $(this).width();
+        var height = $(this).height();
+        localStorage.setItem('width', width);
+        localStorage.setItem('height', height);
+    });
+
+    function setCookie(name, value, options) {
+        options = options || {};
+
+        var expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        var updatedCookie = name + "=" + value;
+
+        for (var propName in options) {
+            updatedCookie += "; " + propName;
+            var propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
+    }
+
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    function StorageForm(id) {
+
+        var form = $('#' + id);
+        load();
+        form.find('input').change(keep);
+        form.find('textarea').change(keep);
+
+        localStorage.setItem('obj', {name: '1', surname: '2'});
+        var obj = localStorage.getItem('obj');
+
+        function keep() {
+            var data = form.serializeArray();
+            localStorage.setItem('formdata_' + id, JSON.stringify(data));
+        }
+
+        function load() {
+            var data = JSON.parse(localStorage.getItem('formdata_' + id));
+            for (var i = 0; i < data.length; i++) {
+                var name = data[i].name;
+                var value = data[i].value;
+                var element = form.find('[name=' + name + ']');
+                if (element.get(0).tagName === 'INPUT' && (element.attr('type') === 'radio' || element.attr('type') === 'checkbox')) {
+                    form.find('[name="' + name + '"][value="' + value + '"]').prop('checked', true);
+                } else {
+                    element.val(value);
+                }
+            }
+        }
+
+    }
+
+    var storageForm = new StorageForm('localStorageForm');
+
 });
 
 
